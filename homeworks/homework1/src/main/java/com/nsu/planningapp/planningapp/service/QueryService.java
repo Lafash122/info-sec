@@ -11,7 +11,7 @@ import java.util.List;
 public class QueryService {
     //TODO: возможно, получить сет типов зданий, которые есть в БД (bblueprint)
 
-    // Метод с более сильным проявлением Error Handling и обращением к несуществующий таблицы БД
+    // Метод с более сильным проявлением Error Handling и обращением к несуществующий таблице БД
     public int errorHandlingMethod(Integer settlementId) throws SQLException {
         String sql = "SELECT COALESCE(SUM(rb.number_of_residents), 0) " +
                     "FROM BAD_TABLE rb " +
@@ -28,8 +28,14 @@ public class QueryService {
             ResultSet rs = stmt.executeQuery();
             return rs.next() ? rs.getInt(1) : 0;
         }
+        /*
         catch (SQLException e) {
+            e.printStackTrace(System.out);
             throw new SQLException("Ошибка SQL: " + e.getMessage() + " | SQL: " + sql, e);
+        }
+        */
+        catch (SQLException e) {
+            throw new SQLException("Ошибка SQL: Проблема при обращении к СУБД");
         }
     }
 
@@ -49,6 +55,9 @@ public class QueryService {
 
             ResultSet rs = stmt.executeQuery();
             return rs.next() ? rs.getInt(1) : 0;
+        }
+        catch (SQLException e) {
+            throw new SQLException("Ошибка SQL: Проблема при обращении к СУБД");
         }
     }
 
@@ -90,6 +99,9 @@ public class QueryService {
             }
             return buildings;
         }
+        catch (SQLException e) {
+            throw new SQLException("Ошибка SQL: Проблема при обращении к СУБД");
+        }
     }
 
     // 3
@@ -109,6 +121,9 @@ public class QueryService {
             ResultSet rs = stmt.executeQuery();
             return rs.next() ? rs.getInt(1) : 0;
         }
+        catch (SQLException e) {
+            throw new SQLException("Ошибка SQL: Проблема при обращении к СУБД");
+        }
     }
 
     // 4
@@ -127,6 +142,9 @@ public class QueryService {
 
             ResultSet rs = stmt.executeQuery();
             return rs.next() ? rs.getInt(1) : 0;
+        }
+        catch (SQLException e) {
+            throw new SQLException("Ошибка SQL: Проблема при обращении к СУБД");
         }
     }
 
@@ -165,6 +183,9 @@ public class QueryService {
 
             return new JobsReportDto(0, 0);
         }
+        catch (SQLException e) {
+            throw new SQLException("Ошибка SQL: Проблема при обращении к СУБД");
+        }
     }
 
     // 6
@@ -183,6 +204,9 @@ public class QueryService {
 
             ResultSet rs = stmt.executeQuery();
             return rs.next() ? rs.getDouble("total_storage") : 0.0;
+        }
+        catch (SQLException e) {
+            throw new SQLException("Ошибка SQL: Проблема при обращении к СУБД");
         }
     }
 
@@ -233,8 +257,12 @@ public class QueryService {
                 if (rsWorkdays.next())
                     totalWorkdays = rsWorkdays.getInt("total_workdays");
             }
+            
 
             return new ConstructionDetailsDto(resources, totalWorkdays);
+        }
+        catch (SQLException e) {
+            throw new SQLException("Ошибка SQL: Проблема при обращении к СУБД");
         }
     }
 
@@ -286,6 +314,9 @@ public class QueryService {
 
             return new ConstructionDetailsDto(resources, totalWorkdays);
         }
+        catch (SQLException e) {
+            throw new SQLException("Ошибка SQL: Проблема при обращении к СУБД");
+        }
     }
 
     // 9
@@ -315,6 +346,9 @@ public class QueryService {
                 ));
             }
             return buildings;
+        }
+        catch (SQLException e) {
+            throw new SQLException("Ошибка SQL: Проблема при обращении к СУБД");
         }
     }
 
@@ -355,6 +389,9 @@ public class QueryService {
             }
             return Double.POSITIVE_INFINITY;
         }
+        catch (SQLException e) {
+            throw new SQLException("Ошибка SQL: Проблема при обращении к СУБД");
+        }
     }
 
     // 11
@@ -390,6 +427,9 @@ public class QueryService {
             ResultSet rs = stmt.executeQuery();
             return rs.next() ? rs.getInt("total_parking") : 0;
         }
+        catch (SQLException e) {
+            throw new SQLException("Ошибка SQL: Проблема при обращении к СУБД");
+        }
     }
 
     // 12
@@ -411,5 +451,9 @@ public class QueryService {
             ResultSet rs = stmt.executeQuery();
             return rs.next() ? rs.getDouble("max_storage") : 0.0;
         }
+        catch (SQLException e) {
+            throw new SQLException("Ошибка SQL: Проблема при обращении к СУБД");
+        }
     }
+    
 }
