@@ -2,7 +2,7 @@
 
 ## 1. Описание внедренной уязвимости
 
-[Отчет о ДЗ 1]()
+[Отчет о ДЗ 1](https://github.com/Lafash122/info-sec/blob/main/homeworks/homework2/explanation.md)
 ## 2. Параметры запуска
 
 | Параметр | Значение |
@@ -19,7 +19,7 @@ docker run --rm -v "%cd%:/src:ro" -v "%cd%\reports:/reports" semgrep/semgrep sem
 Проверка покрытия: файл с уязвимостью присутствует в списке просканированных файлов, ошибок парсинга нет.
 
 Приложенные отчеты сканера:
-- Уязвимая версия: [`report.json`]()
+- Уязвимая версия: [`report.json`](https://github.com/Lafash122/info-sec/blob/main/homeworks/homework2/reports/report.json)
 
 ## 3. Результаты сканирования
 
@@ -59,7 +59,7 @@ docker run --rm -v "%cd%:/src:ro" -v "%cd%\reports:/reports" semgrep/semgrep sem
 
 ### Вариант А. Собственное правило
 
-Файл правила: [`java-error-handling.yaml`]()
+Файл правила: [`java-error-handling.yaml`](https://github.com/Lafash122/info-sec/blob/main/homeworks/homework2/java-error-handling.yaml)
 
 ```yaml
 rules:
@@ -126,21 +126,21 @@ docker run --rm -v "%cd%:/src:ro" -v "%cd%\reports:/reports" semgrep/semgrep sem
 Проверка покрытия: файл с уязвимостью присутствует в списке просканированных файлов, ошибок парсинга нет.
 
 Приложенные отчеты сканера:
-- Уязвимая версия: [`report-combined.json`]()
-- Исправленная версия: [`report-fixed.json`]()
+- Уязвимая версия: [`report-combined.json`](https://github.com/Lafash122/info-sec/blob/main/homeworks/homework2/reports/report-combined.json)
+- Исправленная версия: [`report-fixed.json`](https://github.com/Lafash122/info-sec/blob/main/homeworks/homework2/reports/report-fixed.json)
 
 ## 3. Результаты сканирования
 
 | Версия | Результат | Правило |
 | --- | --- | --- |
-| Уязвимая | TP | [правило]() |
-| Исправленная | TN | [правило]() |
+| Уязвимая | TP | [правило](https://github.com/Lafash122/info-sec/blob/main/homeworks/homework2/java-error-handling.yaml) |
+| Исправленная | TN | [правило](https://github.com/Lafash122/info-sec/blob/main/homeworks/homework2/java-error-handling.yaml) |
 
 ### 3.1. Уязвимая версия
 
 | Поле | Значение |
 | --- | --- |
-| ID правила | [правило]() |
+| ID правила | [правило](https://github.com/Lafash122/info-sec/blob/main/homeworks/homework2/java-error-handling.yaml) |
 | CWE | CWE-209 |
 | Файл | `/src/src/main/java/com/nsu/planningapp/planningapp/service/QueryService.java` |
 | Строка | 33 |
