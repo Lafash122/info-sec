@@ -1,0 +1,26 @@
+rules:
+  - id: java-error-handling
+    languages:
+      - java
+    severity: WARNING
+    message: >-
+      Вывод стека ошибки или сообщения исключения пользователю может раскрыть
+      внутреннюю информацию о приложении.
+    metadata:
+      cwe:
+        - "CWE-209: Generation of Error Message Containing Sensitive Information"
+      owasp:
+        - "A10:2025 – Mishandling of Exceptional Conditions"
+    patterns:
+      - pattern-inside: |
+          try {
+            ...
+          } catch ($T $E) {
+            ...
+          }
+      - pattern-either:
+          - pattern: $E.printStackTrace(...);
+          - pattern: System.err.println($E.getMessage());
+          - pattern: System.out.println($E.getMessage());
+          - pattern: System.out.println($E);
+          - pattern: System.err.println($E);
